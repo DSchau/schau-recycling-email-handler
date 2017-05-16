@@ -1,0 +1,14 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# local files
+handler.js
+util/
+
+# secure files
+config/development.json
+config/production.json

@@ -1,0 +1,24 @@
+{
+  "name": "email-handler",
+  "description": "send an e-mail through AWS Lamda",
+  "version": "1.0.0",
+  "scripts": {
+    "prebuild": "del-cli \"handler.js\" \"util/**/*\"",
+    "build": "tsc",
+    "deploy": "cross-env NODE_ENV=production npm run deploy -- --stage production",
+    "deploy:dev": "cross-env NODE_ENV=development npm run serverless:deploy",
+    "prestart:local": "npm run build",
+    "start": "cross-env NODE_ENV=development serverless offline --location .",
+    "preserverless:deploy": "npm run build",
+    "serverless:deploy": "serverless deploy -v"
+  },
+  "dependencies": {
+    "config": "~1.26.1",
+    "nodemailer": "~4.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "~5.0.0",
+    "del-cli": "~1.0.0",
+    "serverless-offline": "~3.14.0"
+  }
+}
