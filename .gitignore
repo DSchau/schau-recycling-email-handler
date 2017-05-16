@@ -8,6 +8,7 @@ jspm_packages
 # local files
 handler.js
 util/
+!src/util/
 
 # secure files
 config/development.json
