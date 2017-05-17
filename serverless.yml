@@ -7,6 +7,12 @@ provider:
 plugins:
   - serverless-offline
 
+package:
+  include:
+    - handler.js
+    - util/**
+    - config/**
+
 functions:
   send:
     handler: handler.email
