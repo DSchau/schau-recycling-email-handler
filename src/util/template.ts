@@ -100,7 +100,7 @@ const style = `
 `.trim();
 
 export function template({
-  email,
+  email = '',
   message: messageContent,
   name,
   subject = 'Hello from dustinschau.com'
@@ -108,6 +108,9 @@ export function template({
   const message = messageContent
     .split(/\n/)
     .map(message => `<p>${message}</p>`);
+  const contact = [name, email && `(${email})`].filter(
+    val => val && val.length > 0
+  );
   return `
     <html>
       <head>
@@ -133,8 +136,7 @@ export function template({
                             <p class="alert">You've got mail!</p>
                             <div class="sender">
                               <label class="label">Sender:</label>
-                              <h2 class="author">${name} ${email &&
-    `(${email})`})</h2>
+                              <h2 class="author">${contact}</h2>
                             </div>
                             <div class="message-container">
                               <label class="label">Message:</label>
