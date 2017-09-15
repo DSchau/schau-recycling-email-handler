@@ -108,9 +108,9 @@ export function template({
   const message = messageContent
     .split(/\n/)
     .map(message => `<p>${message}</p>`);
-  const contact = [name, email && `(${email})`].filter(
-    val => val && val.length > 0
-  );
+  const contact = [name, email && `(${email})`]
+    .filter(val => val && val.length > 0)
+    .join(' ');
   return `
     <html>
       <head>
