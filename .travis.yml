@@ -8,6 +8,7 @@ script: yarn test
 
 before_deploy:
   - yarn global add serverless
+  - yarn build
 deploy:
   provider: script
   script: serverless deploy --stage production
