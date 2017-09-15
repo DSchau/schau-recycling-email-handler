@@ -7,7 +7,7 @@ import { validator } from './validator';
 export function send(body: string): Promise<nodeMailer.SentMessageInfo> {
   const data = toJson(body);
   const required = ['name', 'message'];
-  const valid = validator(data, ['name', 'message']);
+  const valid = validator(data, required);
   if (!valid) {
     return Promise.reject(
       new Error('[Data Validation]: Required fields not present')

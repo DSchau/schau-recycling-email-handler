@@ -99,12 +99,19 @@ const style = `
   }
 `.trim();
 
-export function template(body: any): string {
-  const message = body.message.split(/\n/).map(message => `<p>${message}</p>`);
+export function template({
+  email,
+  message: messageContent,
+  name,
+  subject = 'Hello from dustinschau.com'
+}: any): string {
+  const message = messageContent
+    .split(/\n/)
+    .map(message => `<p>${message}</p>`);
   return `
     <html>
       <head>
-        <title>${body.subject}</title>
+        <title>${subject}</title>
         <style type="text/css">${style}</style>
       </head>
       <body>
@@ -119,14 +126,14 @@ export function template(body: any): string {
                         <td>
                           <div class="header">
                             <div class="title-container">
-                              <h1 class="title">${body.subject}</h1>
+                              <h1 class="title">${subject}</h1>
                             </div>
                           </div>
                           <div class="content">
                             <p class="alert">You've got mail!</p>
                             <div class="sender">
                               <label class="label">Sender:</label>
-                              <h2 class="author">${body.name} (${body.email})</h2>
+                              <h2 class="author">${name} (${email})</h2>
                             </div>
                             <div class="message-container">
                               <label class="label">Message:</label>
