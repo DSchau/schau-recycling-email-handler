@@ -10,7 +10,7 @@ before_deploy:
   - yarn global add serverless
 deploy:
   provider: script
-  script: serverless deploy
+  script: serverless deploy --stage production
   skip_cleanup: true
   on:
     branch: master
