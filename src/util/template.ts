@@ -133,7 +133,8 @@ export function template({
                             <p class="alert">You've got mail!</p>
                             <div class="sender">
                               <label class="label">Sender:</label>
-                              <h2 class="author">${name} (${email})</h2>
+                              <h2 class="author">${name} ${email &&
+    `(${email})`})</h2>
                             </div>
                             <div class="message-container">
                               <label class="label">Message:</label>
