@@ -7,8 +7,8 @@ cache:
 script: yarn test
 
 before_deploy:
-  - yarn global add serverless
   - yarn build
+  - yarn global add serverless
 deploy:
   provider: script
   script: serverless deploy --stage production
