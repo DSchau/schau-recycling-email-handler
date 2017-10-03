@@ -1,6 +1,10 @@
+import * as React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { renderStatic } from 'glamor/server';
 import * as inlineCss from 'inline-css';
+
 import { inky } from './inky';
-import { STYLE as INKY_STYLE } from '../style';
+import { FOUNDATION_STYLE } from '../style';
 
 const compose = (...args) => {
   return args.reduce((value, fn) => {
@@ -9,32 +13,29 @@ const compose = (...args) => {
   }, undefined);
 };
 
-export const htmlTemplate = async (template, ...args) => {
-  const content = []
-    .concat(template)
-    .map((str, index) => (str += args[index] || ''))
-    .join('');
-  const inline = async template => await inlineCss(template, { url: ' ' });
+export const inline = template => inlineCss(template, { url: ' ' });
+export const render = (Component, props = {}) => () =>
+  renderStatic(() => renderToStaticMarkup(<Component {...props} />));
+
+export const htmlTemplate = async (Component, props) => {
   return compose(
-    inky(content),
-    inkyContent => `
+    render(Component, props),
+    ({ css, html }) => `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width"/>
   <style>
-${INKY_STYLE}
+${FOUNDATION_STYLE}
   </style>
-  <style>
-
-  </style>
+  ${css && `<style>${css}</style>`}
 </head>
 <body>
-  ${inkyContent}
+  ${inky(html)}
 </body>
 </html>
     `,
-    inline
+    await inline
   );
 };

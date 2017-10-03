@@ -1,4 +1,4 @@
-export const STYLE = `
+export const FOUNDATION_STYLE = `
 .wrapper {
   width: 100%; }
 
