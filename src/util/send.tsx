@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import * as nodeMailer from 'nodemailer';
 
 import { toJson } from './to-json';
-import { EmailTemplate } from './email-template';
+import { EmailTemplate } from '../components/email-template';
 import { inky } from './inky';
 import { htmlTemplate } from './html-template';
 import { validator } from './validator';
@@ -26,7 +26,7 @@ export async function send(body: string): Promise<nodeMailer.SentMessageInfo> {
     }
   });
 
-  const html = await htmlTemplate(renderToString(<EmailTemplate {...data}/>));
+  const html = await htmlTemplate(renderToString(<EmailTemplate {...data} />));
   const options = {
     from: `"${data.name}" <${data.email || 'dustinschau@gmail.com'}>`,
     to: 'dustinschau+website@gmail.com',
@@ -34,12 +34,12 @@ export async function send(body: string): Promise<nodeMailer.SentMessageInfo> {
     html
   };
 
-  return await new Promise((resolve, reject) => {
+  return (await new Promise((resolve, reject) => {
     transporter.sendMail(options, (err, info) => {
       if (err) {
         reject(err);
       }
       resolve(info);
     });
-  }) as nodeMailer.SentMessageInfo;
+  })) as nodeMailer.SentMessageInfo;
 }
