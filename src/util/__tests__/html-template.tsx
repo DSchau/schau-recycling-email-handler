@@ -45,7 +45,9 @@ describe('inline', () => {
   });
 
   test('it works with mailto links', async () => {
-    const html = await inline(`<a href="mailto:dustinschau@gmail.com">hello</a>`);
+    const html = await inline(
+      `<a href="mailto:dustinschau@gmail.com">hello</a>`
+    );
 
     expect(html).toMatch(/mailto:dustinschau@gmail.com/);
   });
@@ -68,6 +70,13 @@ describe('render', () => {
         ids: expect.any(Array)
       })
     );
+  });
+
+  test('css is non-null', () => {
+    const results = render(EmailTemplate, props)();
+
+    expect(results.css).toBeDefined();
+    expect(results.css.length).toBeGreaterThan(0);
   });
 });
 
