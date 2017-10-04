@@ -45,7 +45,9 @@ describe('inline', () => {
   });
 
   test('it works with data attributes', async () => {
-    const html = await inline(`<style>[data-header-element] { color: red; }</style><h1 data-header-element>hello world</h1>`);
+    const html = await inline(
+      `<style>[data-header-element] { color: red; }</style><h1 data-header-element>hello world</h1>`
+    );
 
     expect(html).toMatch(/color: red/);
   });
@@ -53,27 +55,13 @@ describe('inline', () => {
 
 describe('render', () => {
   test('it returns an object with expected props', () => {
-    expect(render(EmailTemplate, props)()).toEqual(expect.objectContaining({
-      css: expect.any(String),
-      html: expect.any(String),
-      ids: expect.any(Array)
-    }));
-  });
-
-  test('it returns css', () => {
-    const result = render(EmailTemplate, props)();
-
-    console.log(JSON.stringify(result, null, 2));
-  });
-
-  test('it works with a sample component', () => {
-    const Component = () =>  {
-      return <h1 {...css({
-        color: 'red'
-      })}>Hello World</h1>
-    };
-
-    const result = render(Component)();
+    expect(render(EmailTemplate, props)()).toEqual(
+      expect.objectContaining({
+        css: expect.any(String),
+        html: expect.any(String),
+        ids: expect.any(Array)
+      })
+    );
   });
 });
 

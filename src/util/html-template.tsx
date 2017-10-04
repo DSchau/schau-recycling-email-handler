@@ -2,6 +2,7 @@ import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { renderStatic } from 'glamor/server';
 import * as inlineCss from 'inline-css';
+import * as he from 'he';
 
 import { inky } from './inky';
 import { FOUNDATION_STYLE } from '../style';
@@ -16,6 +17,7 @@ const compose = (...args) => {
 export const inline = template => inlineCss(template, { url: ' ' });
 export const render = (Component, props = {}) => () =>
   renderStatic(() => renderToStaticMarkup(<Component {...props} />));
+export const decode = html => inky(he.decode(html));
 
 export const htmlTemplate = async (Component, props) => {
   return compose(
@@ -32,7 +34,7 @@ ${FOUNDATION_STYLE}
   ${css && `<style>${css}</style>`}
 </head>
 <body>
-  ${inky(html)}
+  ${decode(html)}
 </body>
 </html>
     `,
