@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@dschau/email-template@~1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@dschau/email-template/-/email-template-1.0.2.tgz#962528ed71e585cb620b7abbac67ab47b5f767b3"
+"@dschau/email-template@~1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@dschau/email-template/-/email-template-1.0.3.tgz#0a6888484deb7e1c2a37eb059adf9f53773b5ef8"
   dependencies:
     glamor "~2.20.40"
     prop-types "~15.6.0"

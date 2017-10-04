@@ -44,6 +44,12 @@ describe('inline', () => {
     expect(html).toMatch('"relative/link.html');
   });
 
+  test('it works with mailto links', async () => {
+    const html = await inline(`<a href="mailto:dustinschau@gmail.com">hello</a>`);
+
+    expect(html).toMatch(/mailto:dustinschau@gmail.com/);
+  });
+
   test('it works with data attributes', async () => {
     const html = await inline(
       `<style>[data-header-element] { color: red; }</style><h1 data-header-element>hello world</h1>`
