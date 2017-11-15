@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as nodeMailer from 'nodemailer';
-import * as EmailTemplate from '@dschau/email-template';
+import * as EmailTemplate from '@schau-recycling/email-template';
 
 import { toJson } from './to-json';
 import { inky } from './inky';
