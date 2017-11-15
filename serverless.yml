@@ -1,8 +1,10 @@
-service: email-handler
+service: schau-recycling-email-handler
 
 provider:
   name: aws
   runtime: nodejs6.10
+  environment:
+    GMAIL_PASSWORD: ${env:GMAIL_PASSWORD} 
 
 plugins:
   - serverless-offline

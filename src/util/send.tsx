@@ -20,7 +20,7 @@ export async function send(body: string): Promise<nodeMailer.SentMessageInfo> {
   const transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'dustinschau+website@gmail.com',
+      user: 'schauts+website@gmail.com',
       pass: process.env['GMAIL_PASSWORD']
     }
   });

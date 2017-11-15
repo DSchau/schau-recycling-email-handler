@@ -6,7 +6,7 @@
   "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DSchau/email-handler.git"
+    "url": "https://github.com/DSchau/schau-recycling-email-handler.git"
   },
   "scripts": {
     "precommit": "lint-staged",
