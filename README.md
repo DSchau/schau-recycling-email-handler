@@ -1,8 +1,8 @@
-# email-handler
+# schau-recycling-email-handler
 
-[![Build Status](https://travis-ci.org/DSchau/email-handler.svg?branch=master)](https://travis-ci.org/DSchau/email-handler)
+[![Build Status](https://travis-ci.org/DSchau/schau-recycling-email-handler.svg?branch=master)](https://travis-ci.org/DSchau/schau-recycling-email-handler)
 
-The lamda function used to send e-mails from my personal website
+The lamda function used to send e-mails from schaurecycling.com
 
 ## Install
 

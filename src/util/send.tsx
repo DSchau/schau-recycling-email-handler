@@ -27,9 +27,9 @@ export async function send(body: string): Promise<nodeMailer.SentMessageInfo> {
 
   const html = await htmlTemplate(EmailTemplate, data);
   const options = {
-    from: `"${data.name}" <${data.email || 'dustinschau@gmail.com'}>`,
-    to: 'dustinschau+website@gmail.com',
-    subject: data.subject || 'Hello from dustinschau.com',
+    from: `"${data.name}" <${data.email || 'schauts@gmail.com'}>`,
+    to: 'schauts@gmail.com',
+    subject: data.subject || 'Hello from schaurecycling.com',
     html
   };
 
