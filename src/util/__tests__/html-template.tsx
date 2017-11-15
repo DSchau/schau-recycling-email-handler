@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'glamor';
 import { htmlTemplate, inline, render } from '../html-template';
-import * as EmailTemplate from '@dschau/email-template';
+import * as EmailTemplate from '@schau-recycling/email-template';
 
 const props = {
   email: 'dustinschau@gmail.com',
